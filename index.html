@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Israel - Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* GLOBAL STYLES & RESET */
+        :root {
+            --primary-color: #007bff; /* Bright Blue */
+            --secondary-color: #6c757d; /* Gray */
+            --dark-color: #343a40; /* Dark Charcoal */
+            --light-color: #f8f9fa; /* Off-White */
+            --white-color: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker Blue */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* HEADER AND NAVIGATION */
+        header {
+            background: var(--white-color);
+            color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        #navbar a {
+            margin-left: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        #navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none; /* Hidden on large screens */
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            /* Note: Replace 'hero-background.jpg' with a background color or a relevant image URL */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), #343a40; 
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white-color);
+        }
+
+        .hero-content {
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
+        }
+
+        /* GENERAL SECTION STYLING */
+        .section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .bg-light {
+            background-color: var(--light-color);
+        }
+
+        /* EDUCATION SECTION */
+        .education-item {
+            padding: 1.5rem;
+            background: var(--white-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: 1.5rem;
+            display: inline-block;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .education-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .institution, .duration {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* PORTFOLIO GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--white-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistent look */
+            object-fit: cover; /* Ensures image covers the area without distortion */
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background-color: var(--light-color); /* Placeholder background */
+        }
+
+        .portfolio-item h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .view-link {
+            font-weight: 600;
+        }
+
+        /* CONTACT SECTION */
+        .contact-info {
+            margin-top: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        /* =================================
+           RESPONSIVENESS (Mobile/Tablet View)
+           ================================= */
+        @media (max-width: 768px) {
+            
+            /* Navigation Adjustments for Mobile */
+            .menu-toggle {
+                display: block; /* Show menu icon on small screens */
+            }
+
+            #navbar {
+                display: none; /* Hide navigation links by default */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 60px; /* Adjust based on header height */
+                left: 0;
+                background: var(--white-color);
+                box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+                padding-bottom: 1rem;
+            }
+
+            #navbar.active {
+                display: flex; /* Show navigation when active (toggled by JS) */
+            }
+
+            #navbar a {
+                margin: 0.5rem 0;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--light-color);
+            }
+            
+            /* Hero Adjustments */
+            .hero {
+                height: 50vh;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            /* General Section Adjustments */
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Joshua Israel</h1>
+            <nav id="navbar">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Hello, I'm **Joshua Israel**</h2>
+                    <p>Electronics and Communications Engineer ready to build and innovate.</p>
+                    <a href="#portfolio" class="cta-button">View My Work</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h3>About Me</h3>
+                [cite_start]<p>I am a recent graduate with a **Bachelor of Engineering in Electronics and Communications Engineering** from **Sri Eshwar College of Engineering**[cite: 5, 8]. I am passionate about leveraging my technical background in new and exciting projects. This portfolio showcases my projects and skills.</p>
+            </div>
+        </section>
+
+        <section id="education" class="section bg-light">
+            <div class="container">
+                [cite_start]<h3>Education [cite: 6]</h3>
+                <div class="education-item">
+                    [cite_start]<h4>Bachelor of Engineering - BE [cite: 8]</h4>
+                    [cite_start]<p>Electronics and Communications Engineering [cite: 8]</p>
+                    [cite_start]<p class="institution">Sri Eshwar College of Engineering, Tamil Nadu, India [cite: 5, 7]</p>
+                    [cite_start]<p class="duration">Graduated: 2024 [cite: 8]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h3>My Portfolio</h3>
+                <p>Highlighting my best projects in Electronics, Communication, and related fields.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="project-iot.jpg" alt="IoT Smart Home System">
+                        <h4>IoT Smart Home Monitoring</h4>
+                        <p>Developed a system using microcontrollers to remotely monitor and control home appliances via a web interface.</p>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="project-fpga.jpg" alt="FPGA Signal Processing">
+                        <h4>FPGA-based Signal Filter Design</h4>
+                        <p>Implemented a digital signal processing algorithm (e.g., an FIR filter) on an FPGA board using VHDL/Verilog.</p>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="project-wireless.jpg" alt="Wireless Communication Module">
+                        <h4>Secure Wireless Communication Module</h4>
+                        <p>Designed and tested a point-to-point wireless data link, focusing on noise reduction and encryption protocols.</p>
+                        <a href="#" class="view-link">View Details &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section bg-light">
+            <div class="container">
+                <h3>Get In Touch</h3>
+                <p>I'm always open to new opportunities and collaborations.</p>
+                <div class="contact-info">
+                    [cite_start]<p><strong>Email:</strong> <a href="mailto:joshuaisrael237@gmail.com">joshuaisrael237@gmail.com [cite: 2]</a></p>
+                    [cite_start]<p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joshua-israel-627a91333" target="_blank">View Profile [cite: 3]</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Joshua Israel. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbar = document.getElementById('navbar');
+
+            // Function to toggle the mobile menu
+            menuToggle.addEventListener('click', function() {
+                navbar.classList.toggle('active');
+            });
+
+            // Close the menu when a navigation link is clicked (for better UX on mobile)
+            const navLinks = navbar.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navbar.classList.contains('active')) {
+                        navbar.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
